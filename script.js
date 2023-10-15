@@ -6,7 +6,7 @@ for(let i=0; i<5; i++){
 	const randomTime = Math.floor(Math.random()*5)+1;
 	const promise = new Promise(resolve, reject)=>{
 		setTimeout(()=>{
-			resolve(`promise ${i+1} resolved after ${randomTime}`)
+			resolve("race-to-finish")
 		}, randomTime)
 	}
 	myPromise.push(promise)
@@ -19,7 +19,7 @@ Promise.any(myPromise)
 		const outputdiv = document.getElementById("output");
 	outputdiv.textContent = res;
 }).catch((err)=>{
-	cosnole.log("All promises were rejected", err)
+	cosnole.log("waits for the first promise to resolve check its result", err)
 })
 
 
