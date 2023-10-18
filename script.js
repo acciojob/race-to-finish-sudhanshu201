@@ -26,3 +26,35 @@ Promise.any(myPromise)
 
 // Do not change the code above this
 // add your promises to the array `promises`
+
+Promise.all(myPromise)
+.then((res)=>{
+	const outputDiv = document.getElementById("output")
+	outputDiv.textContent = res
+}).catch((err)=>{
+	console.log("waits for the all promise to resolve check its result", err)
+})
+
+
+Promise.settledall(myPromise)
+.then((res)=>{
+	const outputdiv = document.getElementById("output")
+	output.textContent = res
+}).catch((err)=>{
+	console.log("waits for the all promise to resolve check its result",err)
+})
+
+Promise.race(myPromise)
+.then((res)=>{
+	const outPutdiv = document.getElementById("output")
+	outPutdiv.textContent = res
+}).catch((err)=>{
+	console.log("waits for the fastest promise to resolve check its result", err)
+})
+
+
+
+
+
+
+
