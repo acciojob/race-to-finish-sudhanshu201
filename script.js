@@ -1,60 +1,26 @@
 window.promises = [];
-const myPromise = window.promises
+const myPromises = window.promises; // Rename myPromise to myPromises
 
-//create an array of five promises with random resove time between 1 to 5 sec
-for(let i=0; i<5; i++){
-	const randomTime = Math.floor(Math.random()*5)+1;
-	const promise = new Promise(resolve, reject)=>{
-		setTimeout(()=>{
-			resolve("race-to-finish")
-		}, randomTime)
-	}
-	myPromise.push(promise)
+// Create an array of five promises with random resolve time between 1 to 5 seconds
+for (let i = 0; i < 5; i++) {
+    const randomTime = Math.floor(Math.random() * 5) + 1;
+    const promise = new Promise((resolve, reject) => { // Fix the syntax here
+        setTimeout(() => {
+            resolve("race-to-finish");
+        }, randomTime * 1000); // Convert seconds to milliseconds
+    });
+    myPromises.push(promise);
 }
 
-//Use promise.any to wait for the first promise to resolve
-
-Promise.any(myPromise)
-.then((res)=>{
-		const outputdiv = document.getElementById("output");
-	outputdiv.textContent = res;
-}).catch((err)=>{
-	cosnole.log("waits for the first promise to resolve check its result", err)
-})
-
-
+// Use Promise.any to wait for the first promise to resolve
+Promise.any(myPromises)
+    .then((res) => {
+        const outputdiv = document.getElementById("output");
+        outputdiv.textContent = res;
+    })
+    .catch((err) => {
+        console.log("Waiting for the first promise to resolve, check its result", err); // Fix the typo in console.log
+    });
 
 // Do not change the code above this
-// add your promises to the array `promises`
-
-Promise.all(myPromise)
-.then((res)=>{
-	const outputDiv = document.getElementById("output")
-	outputDiv.textContent = res
-}).catch((err)=>{
-	console.log("waits for the all promise to resolve check its result", err)
-})
-
-
-Promise.settledall(myPromise)
-.then((res)=>{
-	const outputdiv = document.getElementById("output")
-	output.textContent = res
-}).catch((err)=>{
-	console.log("waits for the all promise to resolve check its result",err)
-})
-
-Promise.race(myPromise)
-.then((res)=>{
-	const outPutdiv = document.getElementById("output")
-	outPutdiv.textContent = res
-}).catch((err)=>{
-	console.log("waits for the fastest promise to resolve check its result", err)
-})
-
-
-
-
-
-
-
+// Add your promises to the array `promises`
